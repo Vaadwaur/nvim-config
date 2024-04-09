@@ -30,8 +30,8 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- directory navigation
 --keymap.set("n", "<C-m>", ":NvimTreeFocus<CR>", { noremap = true, silent = true })
--- keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
-keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", { desc = "neotree" })
+-- keymap.set("n", "<C-t>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+keymap.set("n", "<C-t>", ":Neotree filesystem reveal left<CR>", { desc = "neotree" })
 
 -- better indenting
 keymap.set("v", "<", "<gv")
