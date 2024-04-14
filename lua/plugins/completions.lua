@@ -27,6 +27,13 @@ return {
 					["<C-y>"] = cmp.mapping.confirm({ selecte = true }),
 					["<C-e>"] = cmp.mapping.abort(), -- close completion window
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
 				}),
 				-- sources for autocompletion
 				sources = cmp.config.sources({
