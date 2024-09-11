@@ -16,6 +16,8 @@ return {
 				"lua",
 				"markdown",
 				"python",
+				"regex",
+				"vim",
 			},
 			auto_install = false,
 			highlight = {
