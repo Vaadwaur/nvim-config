@@ -35,6 +35,7 @@ keymap.set("n", "*", "*zz")
 keymap.set("n", "<PageUp>", ":bprev<CR>", opts)
 keymap.set("n", "<PageDown>", ":bnext<CR>", opts)
 keymap.set("n", "<C-x>", ":bd<CR>", opts)
+keymap.set("n", "<leader>cx", ":bp<BAR>bd#<CR>", opts)
 
 -- move selected lines down/up
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
