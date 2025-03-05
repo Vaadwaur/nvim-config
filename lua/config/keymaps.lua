@@ -60,6 +60,8 @@ vim.api.nvim_set_keymap("v", "<C-_>", "gcc", { noremap = false }) -- Ctrl + / fo
 -- Diagnostic keymaps
 keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+keymap.set("n", "<M-j>", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
+keymap.set("n", "<M-k>", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 
 keymap.set("n", "[e", function()
 	vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
