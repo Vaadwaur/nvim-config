@@ -15,6 +15,7 @@ return {
 				"gitignore",
 				"lua",
 				"markdown",
+				"markdown_inline",
 				"python",
 				"regex",
 				"vim",
