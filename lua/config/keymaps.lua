@@ -60,15 +60,15 @@ vim.api.nvim_set_keymap("v", "<C-_>", "gcc", { noremap = false }) -- Ctrl + / fo
 -- Diagnostic keymaps
 keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-keymap.set("n", "<M-j>", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-keymap.set("n", "<M-k>", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+keymap.set("n", "<M-k>", function() vim.diagnostic.jump({ float = true, count = -1, desc = "Go to previous [D]iagnostic message" }) end)
+keymap.set("n", "<M-j>", function() vim.diagnostic.jump({ float = true, count = 1, desc = "Go to next [D]iagnostic message" }) end)
 
 keymap.set("n", "[e", function()
-	vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+	vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR })
 	vim.api.nvim_feedkeys("zz", "n", false)
 end)
 keymap.set("n", "]e", function()
-	vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+	vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR })
 	vim.api.nvim_feedkeys("zz", "n", false)
 end)
 
