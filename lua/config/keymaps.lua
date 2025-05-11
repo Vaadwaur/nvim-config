@@ -47,7 +47,7 @@ vim.keymap.set("x", "<leader>p", '"_dP')
 -- directory navigation
 --keymap.set("n", "<C-m>", ":NvimTreeFocus<CR>", { noremap = true, silent = true })
 -- keymap.set("n", "<C-t>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
-keymap.set("n", "<C-t>", ":Neotree filesystem reveal left<CR>", { desc = "neotree" })
+keymap.set("n", "<C-t>", ":Neotree toggle<CR>", { desc = "neotree" })
 
 -- better indenting
 keymap.set("v", "<", "<gv")
