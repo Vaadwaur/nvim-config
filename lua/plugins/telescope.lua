@@ -2,7 +2,7 @@ local keymap = vim.keymap
 
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.3",
+	tag = "0.1.8",
 	event = 'VimEnter',
 	config = function()
 		local actions = require("telescope.actions")
