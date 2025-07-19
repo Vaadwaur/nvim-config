@@ -1,4 +1,5 @@
 local keymap = vim.keymap
+local builtin = require("telescope.builtin")
 
 return {
 	"nvim-telescope/telescope.nvim",
@@ -38,6 +39,9 @@ return {
 		})
 	end,
 	keys = {
+		keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, {}),
+		keymap.set("n", "<leader>ws", builtin.lsp_workspace_symbols, {}),
+
 		keymap.set("n", "<leader>sk", ":Telescope keymaps<CR>",
 			{ noremap = true, silent = true, desc = "[S]earch [K]eymaps" }),
 
