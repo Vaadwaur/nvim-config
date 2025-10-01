@@ -16,7 +16,7 @@ require("config.options")
 require("config.keymaps")
 require("config.autocmds")
 
-vim.lsp.set_log_level("off")
+vim.lsp.log.set_level("off")
 
 local plugins = "plugins"
 
