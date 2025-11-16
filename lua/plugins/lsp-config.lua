@@ -23,30 +23,31 @@ return {
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		config = function()
-			--require("neoconf").setup({})
-
-			local diagnostic_signs = require("util.lsp").diagnostic_signs
-			for type, icon in pairs(diagnostic_signs) do
-				local hl = "DiagnosticSign" .. type
-				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-			end
-
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local on_attach = require("util.lsp").on_attach
 
-			-- C and C++
-			lspconfig.clangd.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-				cmd = { "clangd", "--offset-encoding=utf-16" },
+			-- set default root marker for all clients
+			vim.lsp.config('*', {
+				root_markers = { '.git' },
 			})
 
+			-- C and C++
+			vim.lsp.config.clangd = {
+				capabilities = capabilities,
+				on_attach = on_attach,
+				cmd = { "clangd", "--background-index", "--offset-encoding=utf-16" },
+				filetypes = { 'c', 'cpp' },
+			}
+
 			-- lua
-			lspconfig.lua_ls.setup({
+			vim.lsp.config.lua_ls = {
 				copabilities = capabilities,
 				on_attach = on_attach,
-			})
+			}
+
+			vim.lsp.enable({ "clangd", "lua_ls" })
+
 			--[[
 	lspconfig.lua_ls.setup({
 		capabilities = capabilities,
@@ -64,6 +65,7 @@ return {
 						[vim.fn.stdpath("config") .. "/lua"] = true,
 					},
 				},
+				telemetry = { enable = false },
 			},
 		},
 	})
