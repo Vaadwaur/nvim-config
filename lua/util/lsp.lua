@@ -9,13 +9,15 @@ M.on_attach = function(client, bufnr)
 	-- vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
 	keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-	keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	keymap.set("n", "gd", vim.lsp.buf.definition,
+		vim.tbl_extend("keep", opts, { desc = "LSP: Definition" }))
 
 	keymap.set("n", "<leader>bs", require("telescope.builtin").lsp_document_symbols,
 		vim.tbl_extend("keep", opts, { desc = "LSP: [B]uffer [S]ymbols" }))
 
 	-- keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-	keymap.set("n", "gi", require("telescope.builtin").lsp_implementations, opts)
+	keymap.set("n", "gi", require("telescope.builtin").lsp_implementations,
+		vim.tbl_extend("keep", opts, { desc = "telescope implementation" }))
 	-- keymap.set("n", "gr", vim.lsp.buf.references, opts)
 	keymap.set("n", "gr", require("telescope.builtin").lsp_references, opts)
 	keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -38,6 +40,8 @@ M.on_attach = function(client, bufnr)
 	keymap.set("n", "<leader>f", function()
 		vim.lsp.buf.format({ async = true })
 	end, opts)
+
+	keymap.set("n", "<leader>ap", "<cmd>LspPeekImplementation<CR>", opts)
 
 	if client.name == "clangd" then
 		keymap.set("n", "<leader>ko", "<cmd>ClangdSwitchSourceHeader<CR>",
